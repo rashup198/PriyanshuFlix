@@ -1,13 +1,17 @@
-import React, { useContext } from 'react'
-import { AppContext } from './Context'
+import React from 'react'
 
+import Search from './Search'
+import Movies from './Movies'
 const Home = () => {
-  const name= useContext(AppContext);
+ //const name= useContext(AppContext);
   return (
     <div>
    
-    My home page
-    <p>{name}</p>
+    <Search>
+    </Search>
+    <Movies>
+    </Movies>
+    
       
     </div>
   )
