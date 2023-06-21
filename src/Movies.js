@@ -1,23 +1,20 @@
-import React from 'react';
-import { useContext } from 'react';
-import { AppContext } from './Context';
-import { NavLink } from 'react-router-dom';
+import React, { useContext } from "react";
+import { NavLink } from "react-router-dom";
+import { AppContext } from "./Context";
 
-const Movies = () => {
-  const {movie} = useContext(AppContext);
-  return (
-    const { movie, isLoading } = useGlobalContext();
+const imgUrl = "https://via.placeholder.com/200/200";
+
+const Movie = () => {
+  const { movie, isLoading } = useContext(AppContext);
   if (isLoading) {
     return <div className="loading">Loading....</div>;
   }
 
-  /* plz subsribe to thapa technical channel 
-          https://www.youtube.com/thapatechnical
-         */
+
 
   return (
     <>
-      {/* if movie is present then only show data else remain as it is  */}
+      {}
       <section className="movie-page">
         <div className="grid grid-4-col">
           {movie
@@ -45,6 +42,6 @@ const Movies = () => {
       </section>
     </>
   );
-}
+};
 
-export default Movies
+export default Movie;
