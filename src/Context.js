@@ -6,7 +6,7 @@ import { useState } from 'react';
 // provider(delivery boy)
 // consumer useContext(you)
 
-const API_URL =`http://www.omdbapi.com/?i=tt3896198&apikey=${process.env.REACT_APP_API_KEY}`
+export const API_URL =`http://www.omdbapi.com/?i=tt3896198&apikey=${process.env.REACT_APP_API_KEY}`
 
 const AppContext = React.createContext();
 
@@ -19,7 +19,7 @@ const AppProvider = ({children}) => {
   const [isError, setIsError] = useState({show:"false", msg:""})
 
   const getMovies = async (url) => {
-
+setIsLoading(true);
       try {
         const res = await fetch(url);
         const data= await res.json();
@@ -32,7 +32,7 @@ const AppProvider = ({children}) => {
         else{
           setIsError({
             show:true,
-            msg:data.error,
+            msg:data.Error,
           })
         }
       } 
@@ -45,7 +45,12 @@ const AppProvider = ({children}) => {
 
 
   useEffect(() => {
-    getMovies(`${API_URL}&s=${query}`);
+   let timerout= setTimeout(()=>{
+      getMovies(`${API_URL}&s=${query}`);
+    },400);
+
+    return ()=> clearTimeout(timerout);
+    
   },[query])
 
 
